@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3%; /* Darker Black */
+    --foreground: 0 0% 98%; /* White */
+    --card: 0 0% 8%; /* Dark Gray for cards */
+    --card-foreground: 0 0% 92%; /* Lighter Gray for card text */
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 92%;
+    --primary: 0 0% 90%; /* Very Light Gray for primary elements */
+    --primary-foreground: 0 0% 5%; /* Dark for primary text */
+    --secondary: 0 0% 12%; /* Medium Dark Gray for secondary elements */
+    --secondary-foreground: 0 0% 90%; /* Light Gray for secondary text */
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%; /* Softer Gray for muted text */
+    --accent: 0 0% 18%; /* Darker Gray for accents */
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%; /* Dark Gray for borders */
+    --input: 0 0% 18%;
+    --ring: 0 0% 75%; /* Lighter Gray for rings */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.text-shadow-lg {
+  text-shadow: 0px 2px 10px rgba(0,0,0,0.5);
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366; /* WhatsApp Green */
+  color: #FFF;
+  border-radius: 50px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  /* transition handled by framer-motion */
+}
+
+.whatsapp-icon { 
+  /* Size controlled by SVG attributes */
+}
+
+
+@media screen and (max-width: 767px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+   .whatsapp-icon {
+    /* width: 24px; */ 
+    /* height: 24px; */
+  }
+}
+
+/* Custom scrollbar for a more modern look (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
