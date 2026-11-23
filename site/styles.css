@@ -209,7 +209,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Situaciones ---------- */
 .lead { color: var(--cream-2); max-width: 36em; margin: 1rem 0 0; font-size: 1.1rem; }
-.sits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.sits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 .sit { background: var(--bg-3); border: 1px solid var(--line); border-radius: 14px; padding: 1.8rem 1.6rem; display: flex; flex-direction: column; gap: .9rem; transition: transform .35s var(--ease), border-color .35s, box-shadow .35s; }
 .sit:hover { transform: translateY(-5px); border-color: rgba(196,154,91,.5); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
 .sit h3 { font-size: 1.3rem; }
@@ -242,3 +242,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .infobar { grid-template-columns: 1fr; }
   .info-cell + .info-cell { border-left: 0; border-top: 1px solid var(--line); }
 }
+
+.sit { scroll-margin-top: 96px; }
+.sit:target { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 18px 40px rgba(0,0,0,.35); }
+.sit-list { margin: 0; display: grid; gap: .45rem; }
+.sit-list li { position: relative; padding-left: 1.2rem; color: var(--cream); font-size: .95rem; }
+.sit-list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+@media (max-width: 900px) { .sits { grid-template-columns: 1fr; } }
