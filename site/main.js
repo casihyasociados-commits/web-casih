@@ -55,6 +55,11 @@
       try { if (typeof window.fbq === "function") window.fbq("track", "Contact", { origen: origen }); } catch (_) {}
       // Conversión de Google Ads: descomentar y completar cuando se cree la acción de conversión
       // window.gtag && window.gtag("event", "conversion", { send_to: "AW-XXXXXXXXX/YYYYYYYY" });
+
+      // WhatsApp se abre en otra pestaña; esta pasa a la página de gracias (permite medir el contacto)
+      if (origen !== "gracias") {
+        setTimeout(function () { window.location.href = "gracias.html"; }, 800);
+      }
     });
   }
 
