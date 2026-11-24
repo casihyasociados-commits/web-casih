@@ -51,10 +51,27 @@
       var a = e.target.closest ? e.target.closest("[data-wa]") : null;
       if (!a) return;
       var origen = a.getAttribute("data-wa");
-      try { if (typeof window.gtag === "function") window.gtag("event", "whatsapp_click", { origen: origen }); } catch (_) {}
+      try { if (typeof window.gtag === "function") window.gtag("event", "whatsapp_click", { origen: origen, via_ads: document.documentElement.getAttribute("data-ads") === "1" }); } catch (_) {}
       try { if (typeof window.fbq === "function") window.fbq("track", "Contact", { origen: origen }); } catch (_) {}
       // Conversión de Google Ads: descomentar y completar cuando se cree la acción de conversión
       // window.gtag && window.gtag("event", "conversion", { send_to: "AW-XXXXXXXXX/YYYYYYYY" });
+    });
+  }
+
+  // Visitas que llegan desde un anuncio de Google: se recuerdan y se marca el mensaje de WhatsApp
+  function initAdsOrigin() {
+    var q = window.location.search || "";
+    var fromAds = /[?&](gclid|gbraid|wbraid)=/.test(q) || /[?&]utm_source=google/i.test(q);
+    try {
+      if (fromAds) sessionStorage.setItem("origen_ads", "1");
+      fromAds = fromAds || sessionStorage.getItem("origen_ads") === "1";
+    } catch (_) {}
+    if (!fromAds) return;
+    document.documentElement.setAttribute("data-ads", "1");
+    $$("a[data-wa]").forEach(function (a) {
+      var h = a.getAttribute("href") || "";
+      if (h.indexOf("wa.me/") === -1 || h.indexOf("text=") === -1) return;
+      a.setAttribute("href", h + encodeURIComponent(" Vi su anuncio."));
     });
   }
 
@@ -64,6 +81,7 @@
     safe(initNav, "nav");
     safe(initMenu, "menu");
     safe(initReveals, "reveals");
+    safe(initAdsOrigin, "adsOrigin");
     safe(initTracking, "tracking");
     safe(initYear, "year");
   }
