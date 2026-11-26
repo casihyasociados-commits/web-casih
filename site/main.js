@@ -53,8 +53,8 @@
       var origen = a.getAttribute("data-wa");
       try { if (typeof window.gtag === "function") window.gtag("event", "whatsapp_click", { origen: origen }); } catch (_) {}
       try { if (typeof window.fbq === "function") window.fbq("track", "Contact", { origen: origen }); } catch (_) {}
-      // Conversión de Google Ads: descomentar y completar cuando se cree la acción de conversión
-      // window.gtag && window.gtag("event", "conversion", { send_to: "AW-XXXXXXXXX/YYYYYYYY" });
+      // Conversión de Google Ads: "Clic en WhatsApp"
+      try { if (typeof window.gtag === "function") window.gtag("event", "conversion", { send_to: "AW-18588862672/ZUJvCMjAhMAdENCR7p9F" }); } catch (_) {}
     });
   }
 
